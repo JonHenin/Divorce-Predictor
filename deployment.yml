@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: div
+  labels:
+    app: div
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: div
+  template:
+    metadata:
+      labels:
+        app: div
+    spec:
+      containers:
+      - name: divorce
+        image: gcr.io/docker-project-jhenin-1/divorce:v0.06
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
